@@ -1,6 +1,6 @@
 ---
 title: "Untitled"
-author: "Kebarileng Molefe"
+author: "Nobahle Fata"
 date: "2023-10-08"
 output: html_document
 
@@ -9,7 +9,7 @@ output: html_document
 library("geoR")
 vario.ex<- variog(sic.100, bin.cloud=TRUE)
 plot(vario.ex,main="")
-lines.variomodel(cov.model="spher",cov.pars=c(15000,50),
+lines.variomodel(cov.model="spher",cov.pars=c(1500,50),
 nug=0,max.dist=300)
 ```
 
@@ -25,19 +25,8 @@ ylab="Coord Y",borders=sic.borders,main="Estimation")
 krige.var <- kc$krige.var 
 image(kc,krige.var,loc = pred.grid,col = rgb.palette(20),xlab = "Coord X", ylab = "Coord Y", borders = sic.borders, main = "Kriging Variance")
 ```
-
-```{r}
-library("geoR")
-kc1<- krige.conv(sic.100, loc = sic.100$coords,
-krige=krige.control(cov.model="spherical",cov.pars=c(16000,60)))
-kc2<- krige.conv(sic.100, loc = sic.367$coords,
-krige=krige.control(cov.model="spherical",cov.pars=c(16000,60)))
-plot(sic.100$data,kc1$predict,xlab="Observed",ylab="Estimated",
-main="Control sample")
-abline(a=0,b=1,col="red")
-plot(sic.367$data,kc2$predict,,xlab="Observed",ylab="Estimated",
-main="Control")
-abline(a=0,b=1,col="red")     
+advfc
+    
 ```
 
 ```{r}
@@ -49,7 +38,7 @@ plot.geodata(sic.100,bor=sic.borders,lambda=0.5)
 library("geoR")
 vario.ext <- variog(sic.100, option = "bin", lambda = 0.5)
 plot(vario.ext)
-lines.variomodel(cov.m = "mat", cov.p = c(105, 36), nug = 6.9,
+lines.variomodel(cov.m = "mat", cov.p = c(105, 40), nug = 6.9,
                  max.dist = 300, kappa = 1, lty = 1)
 ```
 
@@ -73,10 +62,10 @@ main="Kriging variance")
 ```{r}
 library(geoR)
 kct1<- krige.conv(sic.100, loc = sic.100$coords,
-krige=krige.control(cov.model="spherical",cov.pars=c(16000,47),
+krige=krige.control(cov.model="spherical",cov.pars=c(1600,47),
 kappa=1,nugget=6.9,lambda=0.5))
 kct2<- krige.conv(sic.100, loc = sic.367$coords,
-krige=krige.control(cov.model="spherical",cov.pars=c(16000,47),
+krige=krige.control(cov.model="spherical",cov.pars=c(1600,47),
 kappa=1,nugget=6.9,lambda=0.5))
 plot(sic.100$data,kct1$predict,xlab="Observed",ylab="Estimated",
 main="Sample")
@@ -85,5 +74,4 @@ plot(sic.367$data,kct2$predict,,xlab="Observed",ylab="Estimated",
 main="Control sample")
 abline(a=0,b=1,col="red")
 ```
-
 
